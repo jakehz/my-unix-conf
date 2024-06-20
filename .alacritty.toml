@@ -1,0 +1,8 @@
+[font]
+
+size = 18.0
+normal = {family = "ZedMono Nerd Font", style="Regular"}
+
+[window]
+
+startup_mode = "maximized"
