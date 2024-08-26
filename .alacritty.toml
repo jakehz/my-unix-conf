@@ -6,3 +6,6 @@ normal = {family = "ZedMono Nerd Font", style="Regular"}
 [window]
 
 startup_mode = "maximized"
+
+[env]
+term = "xterm-256color"

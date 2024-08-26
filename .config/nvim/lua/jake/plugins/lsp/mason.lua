@@ -18,12 +18,12 @@ mason.setup()
 
 mason_lspconfig.setup({
 	ensure_installed = {
+		"gopls",
 		"tsserver",
 		"html",
 		"cssls",
 		"angularls",
 		"clangd",
-		"gopls",
 		"jsonls",
 		"pylsp",
 		"rust_analyzer",
