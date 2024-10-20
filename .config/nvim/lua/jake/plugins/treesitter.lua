@@ -10,6 +10,9 @@ treesitter.setup({
 	indent = { enable = true },
 	autotag = { enable = true },
 	ensure_installed = {
+		"gdscript",
+		"godot_resource",
+		"gdshader",
 		"json",
 		"javascript",
 		"typescript",

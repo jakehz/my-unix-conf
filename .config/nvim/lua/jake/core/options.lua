@@ -48,6 +48,6 @@ opt.iskeyword:append("-")
 opt.colorcolumn = "79"
 -- Show spaces as dots
 opt.list = true
-opt.listchars:append({ tab = "→\\ ", space = "·" })
+opt.listchars:append({ tab = "→\\ ", space = " " })
 opt.conceallevel = 2
 opt.concealcursor = "nvic"

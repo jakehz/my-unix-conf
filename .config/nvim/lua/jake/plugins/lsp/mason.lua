@@ -19,7 +19,7 @@ mason.setup()
 mason_lspconfig.setup({
 	ensure_installed = {
 		"gopls",
-		"tsserver",
+		"ts_ls",
 		"html",
 		"cssls",
 		"angularls",
