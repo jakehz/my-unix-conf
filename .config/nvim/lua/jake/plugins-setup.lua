@@ -20,84 +20,101 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
+local leet_arg = "leetcode.nvim"
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
 		-- import your plugins
-		{"mellow-theme/mellow.nvim"},
-		{"kawre/leetcode.nvim"},
+		{ "mellow-theme/mellow.nvim" },
+		{
+			"kawre/leetcode.nvim",
+			build = ":TSUpdate html",
+			dependencies = {
+				"nvim-telescope/telescope.nvim",
+				"nvim-lua/plenary.nvim", -- required by telescope
+				"MunifTanjim/nui.nvim",
 
-		{"wbthomason/packer.nvim"},
+				-- optional
+				"nvim-treesitter/nvim-treesitter",
+				"rcarriga/nvim-notify",
+				"nvim-tree/nvim-web-devicons",
+			},
+			lazy = leet_arg ~= vim.fn.argv()[1],
+			opts = { arg = leet_arg },
+		},
+
+		{ "wbthomason/packer.nvim" },
 
 		-- Prerequisite for many plugins.
-		{"nvim-lua/plenary.nvim"},
+		{ "nvim-lua/plenary.nvim" },
 
 		-- Colorschemes
-		{"bluz71/vim-nightfly-guicolors"},
-		{"sainnhe/everforest"},
-		{"catppuccin/nvim"},
-		{"sainnhe/gruvbox-material"},
-		{"sainnhe/edge"},
-		{"rebelot/kanagawa.nvim"},
-		{"mellow-theme/mellow.nvim"},
+		-- { "bluz71/vim-nightfly-guicolors" },
+		-- { "sainnhe/everforest" },
+		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+		-- { "sainnhe/gruvbox-material" },
+		-- { "sainnhe/edge" },
+		-- { "rebelot/kanagawa.nvim" },
+		-- { "mellow-theme/mellow.nvim" },
 
 		-- tmux & split window navigation
-		{"christoomey/vim-tmux-navigator"},
+		{ "christoomey/vim-tmux-navigator" },
 
 		-- Maximize current pane
-		{"szw/vim-maximizer"},
+		{ "szw/vim-maximizer" },
 
 		-- Surround lines or words with characters, html tags
-		{"tpope/vim-surround"},
+		{ "tpope/vim-surround" },
 
-		{"vim-scripts/ReplaceWithRegister"},
+		{ "vim-scripts/ReplaceWithRegister" },
 
 		-- Comment out using vim motions
-		{"numToStr/Comment.nvim"},
+		{ "numToStr/Comment.nvim" },
 
-		{"nvim-tree/nvim-tree.lua"},
+		{ "nvim-tree/nvim-tree.lua" },
 
 		-- icons for files of different types
-		{"kyazdani42/nvim-web-devicons"},
-		{"echasnovski/mini.icons"},
+		{ "kyazdani42/nvim-web-devicons" },
+		{ "echasnovski/mini.icons" },
 		-- Adds visual bar at the bottom of the screen
-		{"nvim-lualine/lualine.nvim"},
+		{ "nvim-lualine/lualine.nvim" },
 
 		-- fuzzy finding
 		{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 		{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 
 		-- autocompletion
-		{"hrsh7th/nvim-cmp"},
-		{"hrsh7th/cmp-buffer"},
-		{"hrsh7th/cmp-path"},
+		{ "hrsh7th/nvim-cmp" },
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-path" },
 
 		-- snippets
---		{"L3MON4D3/LuaSnip"},
-		{"saadparwaiz1/cmp_luasnip"},
-		{"rafamadriz/friendly-snippets"},
+		--		{"L3MON4D3/LuaSnip"},
+		{ "saadparwaiz1/cmp_luasnip" },
+		{ "rafamadriz/friendly-snippets" },
 
 		-- managing and installing lsp servers
-		{"williamboman/mason.nvim"},
-		{"williamboman/mason-lspconfig.nvim"},
+		{ "williamboman/mason.nvim" },
+		{ "williamboman/mason-lspconfig.nvim" },
 
 		-- configuring lsp servers
-		{"neovim/nvim-lspconfig"},
-		{"hrsh7th/cmp-nvim-lsp"},
-		{{
-			"glepnir/lspsaga.nvim",
-			branch = "main",
-			requires = {
-				{ "nvim-tree/nvim-web-devicons" },
-				{ "nvim-treesitter/nvim-treesitter" },
+		{ "neovim/nvim-lspconfig" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{
+			{
+				"glepnir/lspsaga.nvim",
+				branch = "main",
+				requires = {
+					{ "nvim-tree/nvim-web-devicons" },
+					{ "nvim-treesitter/nvim-treesitter" },
+				},
 			},
-		}},
-		{"onsails/lspkind.nvim"},
+		},
+		{ "onsails/lspkind.nvim" },
 
 		-- formatting and linting
-		{"jose-elias-alvarez/null-ls.nvim"},
-		{"jayp0521/mason-null-ls.nvim"},
+		{ "jose-elias-alvarez/null-ls.nvim" },
+		{ "jayp0521/mason-null-ls.nvim" },
 
 		-- treesitter configuration
 		{
@@ -109,35 +126,34 @@ require("lazy").setup({
 		},
 
 		-- auto closing
-		{"windwp/nvim-autopairs"}, -- autoclose parens, brackets, quotes, etc...
+		{ "windwp/nvim-autopairs" }, -- autoclose parens, brackets, quotes, etc...
 		{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }, -- autoclose tags
 
 		-- git integration
-		{"lewis6991/gitsigns.nvim"}, -- show line modifications on left hand side
+		{ "lewis6991/gitsigns.nvim" }, -- show line modifications on left hand side
 
 		-- Toggleable terminal
-		{"nvim-lua/plenary.nvim"}, -- don't forget to add this one if you don't have it yet!
-		{{
+		{ "nvim-lua/plenary.nvim" }, -- don't forget to add this one if you don't have it yet!
+		{ {
 			"ThePrimeagen/harpoon",
 			branch = "harpoon2",
 			requires = { { "nvim-lua/plenary.nvim" } },
-		}},
+		} },
 
 		-- Lua
-		{"folke/which-key.nvim"},
+		{ "folke/which-key.nvim" },
 
 		-- Git functionality
-		{"tpope/vim-fugitive"},
+		{ "tpope/vim-fugitive" },
 
 		-- For auto comment generation
-		{{
+		{ {
 			"kkoomen/vim-doge",
 			run = ":call doge#install()",
-		}},
-		{"mbbill/undotree"},
-		{"folke/zen-mode.nvim"},
-
-		},
+		} },
+		{ "mbbill/undotree" },
+		{ "folke/zen-mode.nvim" },
+	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
 	install = { colorscheme = { "mellow" } },
