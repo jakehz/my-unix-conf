@@ -51,7 +51,8 @@ require("lazy").setup({
 		-- Colorschemes
 		-- { "bluz71/vim-nightfly-guicolors" },
 		-- { "sainnhe/everforest" },
-		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+		{ 'projekt0n/github-nvim-theme', name = 'github-theme' },
+		--{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 		-- { "sainnhe/gruvbox-material" },
 		-- { "sainnhe/edge" },
 		-- { "rebelot/kanagawa.nvim" },

@@ -52,4 +52,4 @@ opt.listchars:append({ tab = "→\\ ", space = " " })
 opt.conceallevel = 2
 opt.concealcursor = "nvic"
 
-vim.opt.background = "light"
+vim.opt.background = "dark"
