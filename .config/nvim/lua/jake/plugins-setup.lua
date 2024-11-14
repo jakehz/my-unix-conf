@@ -43,15 +43,13 @@ require("lazy").setup({
 			opts = { arg = leet_arg },
 		},
 
-		{ "wbthomason/packer.nvim" },
-
 		-- Prerequisite for many plugins.
 		{ "nvim-lua/plenary.nvim" },
 
 		-- Colorschemes
 		-- { "bluz71/vim-nightfly-guicolors" },
 		-- { "sainnhe/everforest" },
-		{ 'projekt0n/github-nvim-theme', name = 'github-theme' },
+		{ "projekt0n/github-nvim-theme", name = "github-theme" },
 		--{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 		-- { "sainnhe/gruvbox-material" },
 		-- { "sainnhe/edge" },
