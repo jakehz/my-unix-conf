@@ -99,7 +99,7 @@ require("lazy").setup({
 		{ "onsails/lspkind.nvim" },
 
 		-- formatting and linting
-		{ "jose-elias-alvarez/null-ls.nvim" },
+		{ "nvimtools/none-ls.nvim" },
 		{ "jayp0521/mason-null-ls.nvim" },
 
 		-- treesitter configuration
