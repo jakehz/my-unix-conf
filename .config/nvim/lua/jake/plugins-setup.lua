@@ -25,24 +25,13 @@ local leet_arg = "leetcode.nvim"
 require("lazy").setup({
 	spec = {
 		-- import your plugins
-		{ "mellow-theme/mellow.nvim" },
-		{
-			"kawre/leetcode.nvim",
-			build = ":TSUpdate html",
-			dependencies = {
-				"nvim-telescope/telescope.nvim",
-				"nvim-lua/plenary.nvim", -- required by telescope
-				"MunifTanjim/nui.nvim",
-
-				-- optional
-				"nvim-treesitter/nvim-treesitter",
-				"rcarriga/nvim-notify",
-				"nvim-tree/nvim-web-devicons",
-			},
-			lazy = leet_arg ~= vim.fn.argv()[1],
-			opts = { arg = leet_arg },
+		{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
+		{ 
+			"nvim-telescope/telescope-fzf-native.nvim", 
+			build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
 		},
 
+		{ "mellow-theme/mellow.nvim" },
 		-- Prerequisite for many plugins.
 		{ "nvim-lua/plenary.nvim" },
 
@@ -79,9 +68,7 @@ require("lazy").setup({
 		{ "nvim-lualine/lualine.nvim" },
 
 		-- fuzzy finding
-		{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-		{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
-
+		
 		-- autocompletion
 		{ "hrsh7th/nvim-cmp" },
 		{ "hrsh7th/cmp-buffer" },

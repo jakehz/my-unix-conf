@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/protoc:$PATH"
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jake/.oh-my-zsh"
+export ZSH="/home/jake/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="awesomepanda"
+ZSH_THEME="candy"
 
 ZSH_DISABLE_COMPFIX=true
 # Set list of themes to pick from when loading at random
@@ -101,33 +101,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-eval "$(pyenv init -)"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jake/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/jake/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/jake/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/jake/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH="$HOME/.gobrew/bin:$PATH"
-eval "$(gobrew init -)"
-export PATH="$HOME/.gobrew/bin:$PATH"
-
-
-eval "$(gobrew init -)"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
@@ -151,3 +124,5 @@ function cd() {
       fi
   fi
 }
+
+alias nix-conf="sudo $EDITOR /etc/nixos/configuration.nix"
