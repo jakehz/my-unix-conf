@@ -100,8 +100,14 @@ require("lazy").setup({
 
 		-- formatting and linting
 		{ "nvimtools/none-ls.nvim" },
-		{ "jayp0521/mason-null-ls.nvim" },
-
+		{
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+    },
+		},
 		-- treesitter configuration
 		{
 			"nvim-treesitter/nvim-treesitter",

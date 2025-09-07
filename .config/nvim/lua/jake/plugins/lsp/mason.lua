@@ -32,10 +32,10 @@ mason_lspconfig.setup({
 })
 
 mason_null_ls.setup({
+	handlers={},
 	ensure_installed = {
+		"black",
 		"prettier",
 		"stylua",
-		"eslint_d",
-		"autopep8",
 	},
 })

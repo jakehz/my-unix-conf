@@ -13,9 +13,7 @@ null_ls.setup({
 	sources = {
 		formatting.prettier,
 		formatting.stylua,
-		-- Auto python formatting
-		-- Disabled for now
-		-- formatting.autopep8,
+		formatting.black,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)
