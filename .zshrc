@@ -129,3 +129,5 @@ alias nix-conf="sudo $EDITOR /etc/nixos/configuration.nix"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 bindkey "^Q" beginning-of-line
+
+export MANPAGER=nvim
