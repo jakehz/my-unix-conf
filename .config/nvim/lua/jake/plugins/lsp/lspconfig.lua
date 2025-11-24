@@ -1,8 +1,3 @@
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status then
-	return
-end
-
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
 	return
@@ -33,27 +28,17 @@ end
 -- used to enable autocompletion
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig["html"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+local languages = { "html", "cssls", "angularls", "clangd", "jsonls", "rustanalyzer", "gdscript" }
 
-lspconfig["cssls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+for _, value in ipairs(languages) do
+	vim.lsp.config[value] = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
+	vim.lsp.enable(value)
+end
 
-lspconfig["angularls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["clangd"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["gopls"].setup({
+vim.lsp.config["gopls"] = {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	cmd = { "gopls" },
@@ -67,15 +52,11 @@ lspconfig["gopls"].setup({
 			},
 		},
 	},
-})
+}
 
-lspconfig["jsonls"].setup({
-	capabilities = capabilities,
+vim.lsp.enable("gopls")
 
-	on_attach = on_attach,
-})
-
-lspconfig["pylsp"].setup({
+vim.lsp.config["pylsp"] = {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
@@ -88,15 +69,12 @@ lspconfig["pylsp"].setup({
 			},
 		},
 	},
-})
+}
 
-lspconfig["rust_analyzer"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+vim.lsp.enable("pylsp")
 
 -- configure lua server (with special settings)
-lspconfig["lua_ls"].setup({
+vim.lsp.config["lua_ls"] = {
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = { -- custom settings for lua
@@ -114,9 +92,4 @@ lspconfig["lua_ls"].setup({
 			},
 		},
 	},
-})
-
-lspconfig["gdscript"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+}
