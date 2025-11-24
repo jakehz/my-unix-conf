@@ -127,7 +127,9 @@ function cd() {
 
 alias nix-conf="sudo $EDITOR /etc/nixos/configuration.nix"
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
 bindkey "^Q" beginning-of-line
 
 export MANPAGER=nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
