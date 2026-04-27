@@ -1,8 +1,18 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/protoc:$PATH"
-# Path to your oh-my-zsh installation.
-export ZSH="/home/jake/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -125,11 +135,28 @@ function cd() {
   fi
 }
 
-alias nix-conf="sudo $EDITOR /etc/nixos/configuration.nix"
 # Set up fzf key bindings and fuzzy completion
 bindkey "^Q" beginning-of-line
 
 export MANPAGER=nvim
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -z "$TMUX" ]; then
+    tmux attach -t main || tmux new -s main
+fi
+
+export PATH=$PATH:/home/jake/librepods/linux/build/
+export PATH=$PATH:/home/jake/.cargo/bin
+
+
+cheat() {
+  mkdir -p "$HOME"/cheatsheets
+  if ! [ -f "$HOME/cheatsheets/$1.txt" ]; then
+    printf "Downloading cheatsheet..."
+    curl cheat.sh/"$1" > "$HOME"/cheatsheets/"$1".txt
+  fi 
+  cat "$HOME"/cheatsheets/"$1".txt 
+}
+
+
+source <(fzf --zsh)
